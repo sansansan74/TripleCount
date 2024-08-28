@@ -3,20 +3,23 @@
 #include "main.h"
 #include <iostream>
 
+/// <summary>
+/// return random value minimalValue <= real value <= maximumValue
+/// </summary>
+/// <param name="low"></param>
+/// <param name="high"></param>
+/// <returns></returns>
 long getRandomLong(long low, long high) {
-	// —оздаем генератор случайных чисел, основанный на случайном устройстве
 	std::random_device rd;
-	std::mt19937_64 gen(rd()); // √енератор на основе Mersenne Twister (64-битный)
+	std::mt19937_64 gen(rd());
 
-	// ќпредел€ем распределение в заданном диапазоне
 	std::uniform_int_distribution<long> distrib(low, high);
 
-	// ¬озвращаем случайное число
 	return distrib(gen);
 }
 
 /// <summary>
-/// «аполн€ет вектор случайными числами в диапазоне от minimalValue до maximumValue
+/// Fill vector random values between minimalValue <= real value <= maximumValue
 /// </summary>
 /// <param name="vect"></param>
 /// <param name="minimalValue"></param>
@@ -40,7 +43,7 @@ void PrintStatistics(size_t start, size_t finish, size_t stepCount) {
 	{
 		vector<long> arr(arraySize);
 		FillVectorRandomNumbers(arr, 1, 100);
-		auto result = countTriplets(arr, 2);	// беру маленький коэффициент 2, чтобы было много 2^1 и 2^2
+		auto result = countTriplets(arr, 2);	// i use koefficient = 2, because many nubers divided on 2^1 and 2^2
 
 		cout << arraySize << "\t"
 			<< result.countTriplets << "\t"
